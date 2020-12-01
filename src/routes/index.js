@@ -9,4 +9,7 @@ router.get('/', indexController.home);
 /* GET detail page */
 router.get('/detail', indexController.detail);
 
+/* Post /comprar */
+router.post('/comprar', indexController.comprar)
+
 module.exports = router;

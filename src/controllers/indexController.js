@@ -100,7 +100,11 @@ module.exports = {
     callback: (req, res)=>{
         console.log(req.query); //Esta info es necesaria almacenarla en una DB
         if (req.query.status.includes('success')){
-            return res.render('success')
+            return res.render('success', {
+                payment_type: req.query.payment_type,
+                external_reference: req.query.external_reference,
+                collection_id: req.query.collection_id
+            })
         }
         
         if (req.query.status.includes('pending')){

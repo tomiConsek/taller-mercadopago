@@ -114,8 +114,8 @@ module.exports = {
         return res.status(404).end()
     },
     notifications: (req, res)=>{
-        console.log(req.body)
+        console.log('webhook' + req.body)
 
-        res.status(200).end('Op OK!')
+        res.status(200).end(req.body)
     }
 }

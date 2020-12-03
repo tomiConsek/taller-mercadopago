@@ -16,6 +16,6 @@ router.post('/comprar', indexController.comprar)
 router.get('/callback', indexController.callback);
 
 /* notificaciones */
-router.get('/notifications', indexController.notifications);
+router.post('/notifications', indexController.notifications);
 
 module.exports = router;

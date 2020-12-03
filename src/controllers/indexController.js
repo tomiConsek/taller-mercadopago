@@ -15,7 +15,7 @@ module.exports = {
         return res.render("detail", { ...req.query });
     },
     comprar: (req,res) => {
-        const host= 'http://localhost:3000/'
+        const host= 'https://mp-consek.herokuapp.com/' //'http://localhost:3000/'
         const url= host + 'callback?status='
 
         /*

@@ -15,6 +15,9 @@ module.exports = {
         return res.render("detail", { ...req.query });
     },
     comprar: (req,res) => {
+        const host= 'http://localhost:3000/'
+        const url= host + 'callback?status='
+
         /*
         let item = {
             id: 0,
@@ -56,17 +59,27 @@ module.exports = {
             
             items: [
                 {
-                    id: 1,
-                    title: 'El producto',
-                    description: 'Descripcion del producto',
+                    id: 1234,
+                    title: 'El producto - Consek company',
+                    description: 'Dispositivo móvil de Tienda e-commerce',
                     picture_url: 'https://www.consekcomp.com/img/logo/logo.png',
                     category_id: 'Consek company',
-                    quantity: 1,
+                    quantity: 1, //Number('1')
                     currency_id: 'ARS',
-                    unit_price: 100,
+                    unit_price: 100, //Number('100')
                 }
             ],
             external_reference: 'jtomaschiesa@gmail.com',
+           
+            
+            back_urls:{
+                success: url + 'success',
+                pending: url + 'pending',
+                failure: url + 'failure',
+            },
+            notification_url: host+'notifications',
+            auto_return: 'approved',
+            
         }
         
         
@@ -83,5 +96,26 @@ module.exports = {
         });
         
         
+    },
+    callback: (req, res)=>{
+        console.log(req.query); //Esta info es necesaria almacenarla en una DB
+        if (req.query.status.includes('success')){
+            return res.render('success')
+        }
+        
+        if (req.query.status.includes('pending')){
+            return res.render('pending')
+        }
+        
+        if (req.query.status.includes('failure')){
+            return res.render('failure')
+        }
+        
+        return res.status(404).end()
+    },
+    notifications: (req, res)=>{
+        console.log(req.body)
+
+        res.status(200).end('Op OK!')
     }
 }

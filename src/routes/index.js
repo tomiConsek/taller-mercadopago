@@ -12,4 +12,10 @@ router.get('/detail', indexController.detail);
 /* Post /comprar */
 router.post('/comprar', indexController.comprar)
 
+/* Checkout pagos */
+router.get('/callback', indexController.callback);
+
+/* notificaciones */
+router.get('/notifications', indexController.notifications);
+
 module.exports = router;
